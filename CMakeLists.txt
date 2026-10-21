@@ -112,8 +112,10 @@ if(GLSLC_FOUND)
 		list(APPEND _SHADER_BINARIES ${SHADER_BINARY_PATH})
 	endmacro()
 
-	compile_shader(pyramid.vert)
-	compile_shader(pyramid.frag)
+	compile_shader(scene.vert)
+	compile_shader(scene.frag)
+	compile_shader(unlit.vert)
+	compile_shader(unlit.frag)
 
 	add_custom_target(shaders DEPENDS ${_SHADER_BINARIES})
 	add_dependencies(${PROJECT_NAME} shaders)
