@@ -32,6 +32,16 @@
 			"name": "msvc-release",
 			"inherits": "release",
 			"generator": "Visual Studio 18 2026"
+		},
+		{
+			"name": "mingw-debug",
+			"inherits": "debug",
+			"generator": "MinGW Makefiles"
+		},
+		{
+			"name": "mingw-release",
+			"inherits": "release",
+			"generator": "MinGW Makefiles"
 		}
 	]
 }

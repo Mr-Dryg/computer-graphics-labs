@@ -3,7 +3,9 @@
 ## 1. Configuring the project
 
 ```bash
-cmake --preset msvc-debug # for Windows (Visual Studio 2019)
+cmake --preset debug       # for GNU/Linux (GCC/Clang)
+cmake --preset msvc-debug  # for Windows (Visual Studio 2026)
+cmake --preset mingw-debug # for Windows (MinGW)
 ```
 
 ## 2. Building

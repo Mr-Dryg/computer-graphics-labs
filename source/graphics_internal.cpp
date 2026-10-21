@@ -286,8 +286,8 @@ bool rebuildSwapchain(uint32_t width, uint32_t height) {
 	const VkImageCreateInfo depth_buffer = {
 		.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,
 		.imageType = VK_IMAGE_TYPE_2D,
-		.format = VK_FORMAT_D24_UNORM_S8_UINT,
-		.extent = { uint32_t(width), uint32_t(height), 1 },
+		.format = vk_depth_buffer_format,
+		.extent = { context.swapchain_extent.width, context.swapchain_extent.height, 1 },
 		.mipLevels = 1,
 		.arrayLayers = 1,
 		.samples = VK_SAMPLE_COUNT_1_BIT,
@@ -312,7 +312,7 @@ bool rebuildSwapchain(uint32_t width, uint32_t height) {
 		.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,
 		.image = vk_image_depth_buffer,
 		.viewType = VK_IMAGE_VIEW_TYPE_2D,
-		.format = VK_FORMAT_D24_UNORM_S8_UINT,
+		.format = vk_depth_buffer_format,
 		.subresourceRange = {
 			.aspectMask = VK_IMAGE_ASPECT_DEPTH_BIT,
 			.baseMipLevel = 0,
@@ -388,9 +388,6 @@ bool rebuildSwapchain(uint32_t width, uint32_t height) {
 Context context;
 
 bool initialize(GLFWwindow* const window) {
-	int width = 0, height = 0;
-	glfwGetWindowSize(window, &width, &height);
-
 	vkb::InstanceBuilder ib;
 
 	auto ibr = ib.require_api_version(VK_MAKE_VERSION(1, 1, 0))
